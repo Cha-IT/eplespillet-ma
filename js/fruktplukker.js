@@ -1,9 +1,5 @@
 // Først, opprett en knapp for å generere fruktene
-const button = document.createElement("button");
-button.innerHTML = "Generer frukt";
-document.body.appendChild(button);
-// Når knappen klikkes, generer en ny frukt
-button.addEventListener("click", nyFrukt)
+
 
 let gameOver = false;
 let poeng = 0;
@@ -11,6 +7,9 @@ let poeng = 0;
 const poengEl = document.createElement("div")
 poengEl.id = "poengDiv"
 document.body.appendChild(poengEl)
+let highScore = localStorage.getItem("highScore") || 0
+ 
+    poengEl.innerHTML = `Poeng: ${poeng} <br>High Score: ${highScore}`;
 
 const interval = setInterval(() => {
     const chance = Math.random(); // number between 0 and 1
@@ -54,8 +53,9 @@ function nyBombe()
 
 function eksploder(e)
 {
-      gameOver = true;
-      document.body.removeChild(e.target); 
+    poeng = 0;
+    poengEl.innerHTML = `Poeng: ${poeng} <br>High Score: ${highScore}`;
+     document.body.removeChild(e.target); 
 }
 
 /* Legg merke til bokstaven e inne i parentesen på linja under. 
@@ -63,7 +63,12 @@ Dette betyr at vi sender informasjon om hendelsen (event) som trigget funksjonen
 function fjernFrukt(e)
 {
     poeng ++;
-    poengEl.innerHTML= "Poeng: " + poeng;
+    if (poeng > highScore) {
+        highScore = poeng;
+        localStorage.setItem("highScore", highScore);
+    }
+
+    poengEl.innerHTML = `Poeng: ${poeng} <br>High Score: ${highScore}`;
     document.body.removeChild(e.target); 
     //e.target er det elementet som trigget hendelsen, det vil si elementet vi klikket på for å aktivere funksjonen.
 }
