@@ -8,7 +8,7 @@ button.addEventListener("click", nyFrukt)
 function nyFrukt() 
 {
     const frukt = document.createElement("div");
-    frukt.innerHTML = "🍎"; // Du kan endre dette til forskjellige frukt emojis
+    frukt.innerHTML = "☁️"; // Du kan endre dette til forskjellige frukt emojis
     frukt.style.fontSize = "2em";
     frukt.style.position = "absolute";
     frukt.style.left = Math.random() * window.innerWidth + 'px'; // Plasser frukten på en tilfeldig x-posisjon
