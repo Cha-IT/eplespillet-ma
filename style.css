@@ -1,10 +1,13 @@
 body {  
-    background-color: rgb(127, 255, 251);
+    background-color: aquamarine;
     
 }
 
 button { 
-    background-color: #d5f5d6; 
+    background-color: #4CAF50; 
     border: none; 
-    color: rgb(7, 6, 6); 
+    color: white; 
+    padding: 5px 10px;
+    border-radius: 5px;
+
 }
